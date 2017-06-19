@@ -1,16 +1,16 @@
-const express = require('lorem-ipsum');
-const app = loremIpsum();
+const loremIpsum = require('lorem-ipsum');
+const express = require('express');
+const app = express();
 
-app.get('/hello', function(req, res){
-  res.send('hello!');
+app.get('/lorem/:number', function(req, res){
+  res.send(loremIpsum({
+    count: req.params.number,
+    units: 'paragraphs',
+    format: 'html'
+
+  }));
 });
 
-app.get('/goodbye', function(req, res){
-  res.send('goodbye!');
-});
-app.get('/', function(req, res){
-  res.send('home screen');
-});
 app.listen(3000, function(){
   console.log("Successfully started express application!")
 });
